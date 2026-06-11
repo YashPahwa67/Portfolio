@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-white antialiased;
+  /* JetBrains Mono / Inter look best with default features; nothing exotic. */
+  text-rendering: optimizeLegibility;
+}
+
+/* Respect users who prefer reduced motion: neutralise CSS transitions/animations
+   and disable smooth scrolling. (The WebGL canvases aren't mounted in this mode.) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Themed scrollbar (progressive enhancement — ignored where unsupported). */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.ink.950');
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.ink.600');
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f55;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+}
+
+/* Faint tech grid behind all content — adds the "developer surface" depth from
+   the reference, masked to fade out toward the edges so it never competes with
+   text. Sits below the ambient particle canvas (-z-10). */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -20;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 78%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Neon glow utilities — soft, layered text-shadows in the accent ramp. */
+  .text-glow {
+    text-shadow:
+      0 0 30px rgba(99, 102, 241, 0.5),
+      0 0 10px rgba(34, 211, 238, 0.35);
+  }
+  .heading-glow {
+    text-shadow: 0 0 26px rgba(99, 102, 241, 0.32);
+  }
+}

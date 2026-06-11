@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!--
+    Fallback social card. For best previews on LinkedIn/X, export a 1200x630 PNG
+    named og-image.png and the meta tags in index.html will use it (they point to
+    og-image.png). This SVG documents the intended design.
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#05060a" />
+      <stop offset="1" stop-color="#11131d" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" />
+      <stop offset="0.5" stop-color="#6366f1" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="980" cy="160" r="260" fill="url(#accent)" opacity="0.18" />
+  <text x="90" y="300" font-family="Inter, sans-serif" font-size="84" font-weight="800" fill="#ffffff">Yash Pahwa</text>
+  <text x="92" y="372" font-family="Inter, sans-serif" font-size="40" font-weight="600" fill="url(#accent)">Full-Stack &amp; AI/ML Engineer</text>
+  <text x="92" y="440" font-family="Inter, sans-serif" font-size="28" fill="#9aa3b2">Real-time platforms · diagnostic ML models · AI automation</text>
+  <text x="92" y="560" font-family="'JetBrains Mono', monospace" font-size="24" fill="#6b7280">github.com/YashPahwa67</text>
+</svg>
