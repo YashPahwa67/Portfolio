@@ -36,10 +36,10 @@ export function Contact() {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="group mt-1 flex flex-col items-start gap-1 text-xl font-semibold text-white transition-colors hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan sm:flex-row sm:items-center sm:gap-3 sm:text-2xl md:text-3xl"
+                className="group mt-1 flex w-full max-w-full flex-col items-start gap-1 text-lg font-semibold text-white transition-colors hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan sm:flex-row sm:items-center sm:gap-3 sm:text-2xl md:text-3xl"
                 aria-label={`Copy email address ${profile.social.email}`}
               >
-                <span className="break-all">{profile.social.email}</span>
+                <span className="min-w-0 max-w-full break-all">{profile.social.email}</span>
                 <span className="shrink-0 font-mono text-xs text-white/40 group-hover:text-accent-cyan">
                   {copied ? 'copied ✓' : 'click to copy'}
                 </span>
