@@ -64,9 +64,9 @@ export function Projects() {
       intro="A few things I've built end to end — full-stack products and machine-learning systems. Links go to live demos and source."
     >
       {/* Curated, hand-written feature grid */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid auto-rows-fr gap-6 md:grid-cols-2">
         {featured.map((project, i) => (
-          <Reveal key={project.title} delay={(i % 2) * 0.08}>
+          <Reveal key={project.title} delay={(i % 2) * 0.08} className="h-full">
             <ProjectCard project={project} />
           </Reveal>
         ))}

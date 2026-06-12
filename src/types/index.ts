@@ -80,6 +80,10 @@ export interface Project {
   liveUrl?: string;
   /** Optional cover image (e.g. /projects/typeify.png). Falls back to a generated cover. */
   image?: string;
+  /** How the cover image fills the banner. 'contain' fits wide figures fully (default 'cover'). */
+  imageFit?: 'cover' | 'contain';
+  /** Banner background behind a 'contain' image. Use 'white' for white-background figures. */
+  imageBg?: 'dark' | 'white';
   /** Whether to feature this project in the curated grid. */
   featured: boolean;
   /** Short tag used for the card's corner label. */

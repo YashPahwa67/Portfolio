@@ -55,21 +55,29 @@ export function ProjectCard({ project }: ProjectCardProps) {
   }
 
   return (
-    <div className="[perspective:1200px]">
+    <div className="h-full [perspective:1200px]">
       <motion.article
         onPointerMove={handleMove}
         onPointerLeave={handleLeave}
-        style={reduced ? undefined : { rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-900/60 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.95)] backdrop-blur-sm transition-all duration-300 hover:border-accent-indigo/40 hover:shadow-[0_0_48px_-10px_rgba(99,102,241,0.45)]"
+        style={reduced ? undefined : { rotateX, rotateY }}
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-900/80 shadow-[0_24px_60px_-32px_rgba(0,0,0,0.95)] transition-[border-color,box-shadow] duration-300 hover:border-accent-indigo/40 hover:shadow-[0_0_48px_-10px_rgba(99,102,241,0.45)]"
       >
         {/* ── Cover ─────────────────────────────────────────────── */}
-        <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10">
+        <div
+          className={cn(
+            'relative aspect-[16/10] overflow-hidden border-b border-white/10',
+            project.imageBg === 'white' ? 'bg-white' : 'bg-ink-950',
+          )}
+        >
           {project.image ? (
             <img
               src={project.image}
               alt={`${project.title} preview`}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className={cn(
+                'h-full w-full transition-transform duration-500 group-hover:scale-105',
+                project.imageFit === 'contain' ? 'object-contain' : 'object-cover',
+              )}
             />
           ) : (
             <div

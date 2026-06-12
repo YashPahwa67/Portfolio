@@ -12,8 +12,28 @@ import type { GitHubRepo } from '@/types';
  */
 
 const API_ROOT = 'https://api.github.com';
-const CACHE_KEY = 'gh-repos-cache:v1';
+const CACHE_KEY = 'gh-repos-cache:v4';
 const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
+
+/**
+ * Repos hidden from the live feed — scratch/course/test repos that aren't
+ * portfolio-worthy, so real projects (Typeify, etc.) surface instead.
+ * Compared case-insensitively. Edit this list to curate the feed.
+ */
+const HIDDEN_REPOS = new Set(['xebiaa', 'resume-cv', 'ucs420']);
+
+/**
+ * Repos surfaced FIRST in the feed (in this order), regardless of push date —
+ * so your best work always leads. Anything not listed follows, newest first.
+ */
+const PINNED_REPOS = [
+  'typeify',
+  'internship-platform',
+  'leaf_disease_detection',
+  'pcod-management',
+  'selftuned-chatbot',
+  'ai-placement-platform',
+];
 
 interface CacheEntry {
   fetchedAt: number;
@@ -96,7 +116,7 @@ export async function fetchUserRepos(
   const raw = (await res.json()) as GitHubRepo[];
   // Keep only original (non-fork, non-archived) repos and trim to our typed shape.
   const repos: GitHubRepo[] = raw
-    .filter((r) => !r.fork && !r.archived)
+    .filter((r) => !r.fork && !r.archived && !HIDDEN_REPOS.has(r.name.toLowerCase()))
     .map((r) => ({
       id: r.id,
       name: r.name,
@@ -112,6 +132,17 @@ export async function fetchUserRepos(
       archived: r.archived,
       pushed_at: r.pushed_at,
     }));
+
+  // Pinned repos lead (in PINNED_REPOS order); everything else keeps the API's
+  // newest-pushed-first order behind them.
+  repos.sort((a, b) => {
+    const ai = PINNED_REPOS.indexOf(a.name.toLowerCase());
+    const bi = PINNED_REPOS.indexOf(b.name.toLowerCase());
+    if (ai === -1 && bi === -1) return 0;
+    if (ai === -1) return 1;
+    if (bi === -1) return -1;
+    return ai - bi;
+  });
 
   writeCache(username, repos);
   return repos;
