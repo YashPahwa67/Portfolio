@@ -12,7 +12,7 @@ import type { GitHubRepo } from '@/types';
  */
 
 const API_ROOT = 'https://api.github.com';
-const CACHE_KEY = 'gh-repos-cache:v4';
+const CACHE_KEY = 'gh-repos-cache:v5';
 const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
 
 /**
@@ -20,7 +20,7 @@ const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
  * portfolio-worthy, so real projects (Typeify, etc.) surface instead.
  * Compared case-insensitively. Edit this list to curate the feed.
  */
-const HIDDEN_REPOS = new Set(['xebiaa', 'resume-cv', 'ucs420']);
+const HIDDEN_REPOS = new Set(['ai-placement-platform', 'resume-cv', 'ucs420']);
 
 /**
  * Repos surfaced FIRST in the feed (in this order), regardless of push date —
@@ -32,7 +32,7 @@ const PINNED_REPOS = [
   'leaf_disease_detection',
   'pcod-management',
   'selftuned-chatbot',
-  'ai-placement-platform',
+  'xebiaa',
 ];
 
 interface CacheEntry {

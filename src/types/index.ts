@@ -78,12 +78,16 @@ export interface Project {
   repoUrl?: string;
   /** Live deployment URL, if one exists. */
   liveUrl?: string;
+  /** When there's no liveUrl yet, show a muted "Live · upcoming" indicator instead. */
+  liveUpcoming?: boolean;
   /** Optional cover image (e.g. /projects/typeify.png). Falls back to a generated cover. */
   image?: string;
   /** How the cover image fills the banner. 'contain' fits wide figures fully (default 'cover'). */
   imageFit?: 'cover' | 'contain';
   /** Banner background behind a 'contain' image. Use 'white' for white-background figures. */
   imageBg?: 'dark' | 'white';
+  /** Focal alignment for a 'cover' image (default center). 'right' keeps the right edge in view. */
+  imagePosition?: 'left' | 'center' | 'right';
   /** Whether to feature this project in the curated grid. */
   featured: boolean;
   /** Short tag used for the card's corner label. */

@@ -65,7 +65,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* ── Cover ─────────────────────────────────────────────── */}
         <div
           className={cn(
-            'relative aspect-[16/10] overflow-hidden border-b border-white/10',
+            'relative aspect-[16/10] overflow-hidden',
             project.imageBg === 'white' ? 'bg-white' : 'bg-ink-950',
           )}
         >
@@ -77,6 +77,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
               className={cn(
                 'h-full w-full transition-transform duration-500 group-hover:scale-105',
                 project.imageFit === 'contain' ? 'object-contain' : 'object-cover',
+                project.imagePosition === 'right' && 'object-right',
+                project.imagePosition === 'left' && 'object-left',
               )}
             />
           ) : (
@@ -137,6 +139,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
               >
                 Live demo <ExternalIcon width={16} height={16} />
               </a>
+            )}
+            {!project.liveUrl && project.liveUpcoming && (
+              <span
+                className="inline-flex items-center gap-1.5 font-medium text-amber-300/80"
+                title="Live deployment coming soon"
+              >
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber-400/80" />
+                Live · upcoming
+              </span>
             )}
             {project.repoUrl && (
               <a

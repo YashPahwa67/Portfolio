@@ -174,8 +174,7 @@ export const content: SiteContent = {
       tech: ['Python', 'OpenCV', 'scikit-learn', 'scikit-image', 'Random Forest', 'NumPy'],
       repoUrl: 'https://github.com/YashPahwa67/pcod-management',
       image: '/projects/pcos.jpg',
-      imageFit: 'contain',
-      imageBg: 'white',
+      imagePosition: 'right',
       featured: true,
       domain: 'Computer Vision',
     },
@@ -192,9 +191,11 @@ export const content: SiteContent = {
     {
       title: 'SelfTuned Chatbot',
       description:
-        'A conversational chatbot built in Python that tunes its own responses — experimenting with self-improving dialogue: collecting interactions, refining the model, and iterating on response quality inside a reproducible Jupyter workflow.',
-      tech: ['Python', 'NLP', 'Jupyter', 'scikit-learn'],
+        'A self-hosted, LoRA fine-tuned LLM chatbot (Qwen/Llama) tuned to a product voice — paired with a cinematic React + Three.js landing page and a FastAPI backend that streams responses from the trained adapter.',
+      tech: ['Python', 'PyTorch', 'LoRA', 'FastAPI', 'React', 'Three.js'],
       repoUrl: 'https://github.com/YashPahwa67/SelfTuned-Chatbot',
+      image: '/projects/selftuned-chatbot.jpg',
+      liveUpcoming: true,
       featured: true,
       domain: 'Machine Learning',
     },
