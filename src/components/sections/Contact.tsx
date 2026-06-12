@@ -29,14 +29,14 @@ export function Contact() {
       intro="I'm open to internships, freelance and interesting collaborations. The fastest way to reach me is email."
     >
       <Reveal>
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-ink-900/80 to-ink-950 p-8 md:p-12">
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-ink-900/80 to-ink-950 p-6 sm:p-8 md:p-12">
           <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-sm text-white/50">Email me at</p>
               <button
                 type="button"
                 onClick={copyEmail}
-                className="group mt-1 flex w-full max-w-full flex-col items-start gap-1 text-lg font-semibold text-white transition-colors hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan sm:flex-row sm:items-center sm:gap-3 sm:text-2xl md:text-3xl"
+                className="group mt-1 flex w-full max-w-full flex-col items-start gap-1 text-base font-semibold text-white transition-colors hover:text-accent-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan sm:flex-row sm:items-center sm:gap-3 sm:text-2xl md:text-3xl"
                 aria-label={`Copy email address ${profile.social.email}`}
               >
                 <span className="min-w-0 max-w-full break-all">{profile.social.email}</span>
